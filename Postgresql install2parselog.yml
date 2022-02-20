@@ -12,7 +12,7 @@
   - name: Ensure state
     service:
       name: postgresql
-      state: stated
+      state: started
       enabled: true
 
   - name: install rsyslog version 8.2001.0
