@@ -28,7 +28,7 @@
 
   - name: Add line to the syslog  /etc/rsyslog.conf
     blockinfile:
-    path: /etc/rsyslog.conf
+    dest: /etc/rsyslog.conf
     block: |
       module(load="imudp")
       input(type="imudp" port="5149")
@@ -38,7 +38,7 @@
    
   - name: Enable logging for postgresql
     blockinfile:
-    path: /etc/postgresql/12/main/
+    dest: /etc/postgresql/12/main/
     block: |
       log_statement = 'all'
       log_directory = 'pg_log'
