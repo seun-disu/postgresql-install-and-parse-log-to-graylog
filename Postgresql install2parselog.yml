@@ -55,7 +55,7 @@
       name: postgresql
       state: restarted
       
-  - name: Restart Postgresql service
+  - name: Restart rsyslog service
     ansible.builtin.service:
       name: rsyslog
       state: restarted  
