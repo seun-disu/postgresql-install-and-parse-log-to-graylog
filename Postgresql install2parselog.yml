@@ -25,18 +25,7 @@
       name: rsyslog
       state: started
       enabled: true
-
-  - name: add line to the syslog  /etc/rsyslog.conf
-    lineinfile:
-      path: /etc/rsyslog.conf
-      state: present
-      line: "{{ item }}"
-    with_items:
-    - 'module(load="imudp")'
-    - 'input(type="imudp" port="5149")'
-    - '*.* @10.3.0.7:5149'
-    - 'local0.*    /var/log/postgresql'
-   
+  
   - name: Restart Postgresql service
     ansible.builtin.service:
       name: postgresql
