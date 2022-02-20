@@ -43,12 +43,12 @@
       state: present
       line: "{{ item }}"
     with_items:
-    - 'log_statement = 'all''
-    - 'log_directory = 'pg_log''
-    - 'log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log''
+    - 'log_statement = 'all'
+    - 'log_directory = 'pg_log'
+    - 'log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
     - 'logging_collector = on'
     - 'log_min_error_statement = error'
-    - 'log_destination = 'syslog''
+    - 'log_destination = 'syslog'
    
   - name: Restart Postgresql service
     ansible.builtin.service:
