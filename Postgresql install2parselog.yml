@@ -4,20 +4,9 @@
   become: true
 
   tasks:
-  - name: install Postgresql 
-    apt:
-      name: postgresql
-      state: present
-
-  - name: Ensure state
-    service:
-      name: postgresql
-      state: stated
-      enabled: true
-
   - name: install rsyslog version 8.2001.0
     apt:
-      name: rsyslog=8.2001.0
+      name: rsyslog
       state: present
 
   - name: start rsyslog service
