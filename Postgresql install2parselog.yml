@@ -27,26 +27,29 @@
       enabled: true
 
   - name: add line to the syslog  /etc/rsyslog.conf
-    blockinfile:
-    dest: /etc/rsyslog.conf
-    block: |
-      module(load="imudp")
-      input(type="imudp" port="5149")
-      *.* @10.3.0.7:5149
-      local0.*    /var/log/postgresql
-      backup: yes
-   
+    lineinfile:
+      path: /etc/rsyslog.conf
+      state: present
+      line: "{{ item }}"
+    with_items:
+    - 'module(load="imudp")'
+    - 'input(type="imudp" port="5149")'
+    - '*.* @10.3.0.7:5149'
+    - 'local0.*    /var/log/postgresql'
+    
   - name: Enable logging for postgresql
-    blockinfile:
-    dest: /etc/postgresql/12/main/
-    block: |
-      log_statement = 'all'
-      log_directory = 'pg_log'
-      log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
-      logging_collector = on
-      log_min_error_statement = error
-      log_destination = 'syslog' 
-
+    lineinfile:
+      path: /etc/postgresql/12/main/postgresql.conf
+      state: present
+      line: "{{ item }}"
+    with_items:
+    - 'log_statement = 'all''
+    - 'log_directory = 'pg_log''
+    - 'log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log''
+    - 'logging_collector = on'
+    - 'log_min_error_statement = error'
+    - 'log_destination = 'syslog''
+   
   - name: Restart Postgresql service
     ansible.builtin.service:
       name: postgresql
