@@ -46,8 +46,8 @@
     - "log_statement = 'all'"
     - "log_directory = 'pg_log'"
     - "log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'"
-    - "logging_collector = on'"
-    - "log_min_error_statement = error'"
+    - "logging_collector = 'on'"
+    - "log_min_error_statement = 'error'"
     - "log_destination = 'syslog'"
    
   - name: Restart Postgresql service
