@@ -26,7 +26,7 @@
       state: started
       enabled: true
 
-  - name: Add line to the syslog  /etc/rsyslog.conf
+  - name: add line to the syslog  /etc/rsyslog.conf
     blockinfile:
     dest: /etc/rsyslog.conf
     block: |
