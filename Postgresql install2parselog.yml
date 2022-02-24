@@ -34,7 +34,7 @@
     with_items:
     - 'module(load="imudp")'
     - 'input(type="imudp" port="5149")'
-    - '*.* @10.3.0.7:5149'
+    - '*.* @graylog-ip:5149'
     - 'local0.*    /var/log/postgresql'
     
   - name: add line to the postgresql.conf
